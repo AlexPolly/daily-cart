@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class ViewProductComponent {
 
+  addtoWishlist(product:any){
+    if(sessionStorage.getItem("token")){
+      alert("Proceed to add item to wishlst")
+    }else{
+      alert("Operation Denied... please login!!!")
+    }
+  }
+
+  addtocart(product:any){
+    if(sessionStorage.getItem("token")){
+      alert("Proceed to add item to cart")
+    }else{
+      alert("Operation Denied... please login!!!")
+    }
+  }
 }
