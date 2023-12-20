@@ -4,18 +4,26 @@
              <img class="w-75" src="https://imgproxy.epicpxls.com/2GhAjccE9MUsDNSJw4B3Z2s-wwBp-C87q-4B1hHv57Q/rs:fill:800:600:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by84MDdiMDEz/OGY4NjQ2NzNlNTNm/ZTYxZGMzYjgxM2Rm/MQ.jpg" alt="">
          </div>
          <div class="col lg-4" style="background-color: rgb(141, 255, 255); border-radius: px ;">
-             <form class="p-5" action="">
+             <form class="p-5" action="" [formGroup]="loginForm"  >
                  <h1 style="overflow-y: hidden;" class="fw-bolder mb-4 d-flex justify-content-center align-items-center">Login Form</h1>
                  <div class="form-floating mb-3">
-                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email" name="email">
                      <label for="floatingInput">Email address</label>
                    </div>
+                   <!-- validation Email -->
+                   <div *ngIf="this.loginForm.get('email')?.errors&&this.loginForm.get('email')?.touched" class="mb-2 fw-bolder text-danger">
+                    *Invalid Email
+                  </div>
                    <div class="form-floating">
-                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" name="password" >
                      <label for="floatingPassword">Password</label>
                    </div>
+                    <!-- validation password -->
+                    <div *ngIf="this.loginForm.get('password')?.errors&&this.loginForm.get('password')?.touched" class="mb-2 fw-bolder text-danger">
+                      *Invalid Password
+                    </div>
                    <div class="d-flex align-items-center justify-content-center">
-                     <button style="background-color: aqua; border-radius: 5px; padding: 10px; border: 1px solid;" class="w-75 mt-3">Login</button>
+                     <button  (click)="login()" style="background-color: aqua; border-radius: 5px; padding: 10px; border: 1px solid;" class="w-75 mt-3">Login</button>
                    </div>
              </form>
              <p class="d-flex justify-content-center align-items-center ">New User? Click here to <a routerLink="/user/register" class="">Register</a></p>
